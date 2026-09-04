@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEDxQurultoy</title>
+<!-- Font Awesome (Telegram va boshqa belgilar uchun) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* ==========================================
+   GALEREYADAGI AYNI BIR XIL ORQA FON
+========================================== */
+body{
+  font-family:Arial,sans-serif;
+  min-height:100vh;
+  background:linear-gradient(135deg,#075b3f,#087b70,#075b88);
+  color:white;
+  padding:20px 20px 50px;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+
+/* ==========================================
+   GLASSMORPHISM NAVIGATSIYA PANELI (HEADER)
+========================================== */
+.navbar-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  position: sticky;
+  top: 15px;
+  z-index: 1000;
+  animation: fadeInDown 0.8s ease-out forwards;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.12) 0%, 
+    rgba(0, 0, 0, 0.2) 100%
+  );
+
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+
+  border-radius: 50px;
+  padding: 8px 20px 8px 16px;
+  width: 100%;
+  max-width: 1150px;
+  transition: all 0.3s ease;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #fff;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.nav-brand .logo-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.nav-brand:hover .logo-img {
+  transform: scale(1.08);
+}
+
+.nav-brand .brand-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  line-height: 1.2;
+}
+
+.nav-links {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  gap: 6px;
+  margin: 0 auto;
+  padding: 0 5px;
+  flex-wrap: nowrap;
+  flex-shrink: 1;
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: 12.5px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-links a.home-icon {
+  font-size: 15px;
+  padding: 6px 10px;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+.nav-links a.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+}
+
+.nav-telegram {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 12.5px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-left: 10px;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.nav-telegram:hover {
+  background: #20a0e1;
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(32, 160, 225, 0.4);
+}
+
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================
+   GAZETA USLUBIDAGI BO'LIMLAR (NEWSPAPER LAYOUT)
+========================================== */
+.newspaper-article {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.15));
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 35px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
+  margin-bottom: 30px;
+  color: #ffffff;
+  /* Kursor olib borilganda tepaga ko'tarilish */
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+}
+
+.newspaper-article:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* RASM SHABLONI VA HOVER ZOOM SOZLAMASI */
+.newspaper-img-wrapper {
+  width: 50%; /* Rasm kengligi */
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* 1-Bo'lim: Rasm CHAPDA */
+.img-left {
+  float: left;
+  margin-right: 30px;
+  margin-bottom: 20px;
+}
+
+/* 2-Bo'lim: Rasm O'NGDA */
+.img-right {
+  float: right;
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+.newspaper-img-wrapper img {
+  width: 100%;
+  height: 420px; /* Rasm balandligi */
+  object-fit: cover;
+  display: block;
+  /* Zoom animatsiyasi */
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.newspaper-article:hover .newspaper-img-wrapper img {
+  transform: scale(1.08); /* Kursor kelganda rasm kattalashadi */
+}
+
+/* GAZETA MATNI SOZLAMALARI */
+.newspaper-text-content {
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.92);
+  text-align: justify;
+}
+
+.newspaper-text-content h1 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #ffffff;
+  text-align: left;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.newspaper-text-content p {
+  margin-bottom: 16px;
+  text-indent: 20px; /* Xuddi gazetadagidek xatboshi */
+}
+
+/* CLEARFIX: FLOAT element buzilib ketmasligi uchun */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* RESPONSIVE (MOBIL QURILMALAR UCHUN) */
+@media(max-width:1024px){
+  .newspaper-img-wrapper {
+    width: 48%;
+  }
+  .img-left { margin-right: 20px; }
+  .img-right { margin-left: 20px; }
+  .newspaper-img-wrapper img { height: 350px; }
+}
+
+@media(max-width:768px){
+  .newspaper-article {
+    padding: 20px;
+  }
+  .img-left, .img-right {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .newspaper-img-wrapper img {
+    height: 300px;
+  }
+  .newspaper-text-content p {
+    text-indent: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- NAVIGATSIYA PANELI -->
+  <div class="navbar-wrapper">
+    <nav class="navbar">
+      <a href="index.html" class="nav-brand">
+        <img src="../images/60524aa6-25e8-4851-a328-6011cb4a0805.jpg" alt="Logo" class="logo-img">
+        <span class="brand-title">
+          V EKOLOGIYA<br>
+          XALQARO<br>
+          QURULTOYI
+        </span>
+      </a>
+
+      <!-- MARKAZDAGI TUGMALAR -->
+      <ul class="nav-links">
+        <li>
+          <a href="index.html" class="home-icon" title="Bosh sahifa">
+            <i class="fa-solid fa-house"></i>
+          </a>
+        </li>
+        <li><a href="kahoot.html">Kahoot</a></li>
+        <li><a href="xalqlardostligi.html">Xalqlar dostligi</a></li>
+        <li><a href="SPORT.html">Sport</a></li>
+        <li><a href="gallery.html">Galereya</a></li>
+      </ul>
+
+      <a href="https://t.me/ekologik_qurultoy" target="_blank" class="nav-telegram">
+        <i class="fa-brands fa-telegram"></i>
+        <span>Telegram</span>
+      </a>
+    </nav>
+  </div>
+
+  <main class="content-wrapper">
+    
+    <!-- 1-BO'LIM: RASM CHAP TOMONDA -->
+    <article class="newspaper-article clearfix">
+      
+      <div class="newspaper-img-wrapper img-left">
+        <img src="../images/0121e3297c3b4e958659b0964a66247f.jpg" alt="Birinchi maqola rasmi">
+      </div>
+
+      <div class="newspaper-text-content">
+        <h1>TEDxQURULTOY — G‘OYALAR BILAN KELAJAK SARI</h1>
+
+        <p>Bugungi dunyoda katta o‘zgarishlar faqat texnologiya yoki iqtisodiyot orqali emas, balki yangi g‘oyalar va jasorat bilan aytilgan fikrlar orqali ham yuzaga kelmoqda. Bir insonning oddiy savoli, noodatiy qarashi yoki muhim muammo haqidagi nutqi minglab insonlarni o‘ylashga va harakat qilishga undashi mumkin.
+
+Aynan mana shunday g‘oyalar maydoni — TEDxQurultoydir.
+
+TEDxQurultoy — yoshlarning o‘z fikrlarini keng auditoriyaga yetkazishi, dolzarb masalalar haqida mulohaza yuritishi va o‘z g‘oyalari bilan boshqalarga ilhom berishi uchun yaratilgan muhim platformalardan biridir. Bu yerda asosiy e’tibor shunchaki chiroyli nutqqa emas, balki mazmunli fikr, kuchli g‘oya va uning jamiyat uchun ahamiyatiga qaratiladi.</p>
+
+        
+      </div>
+
+    </article>
+
+    <!-- 2-BO'LIM: RASM O'NG TOMONDA -->
+    <article class="newspaper-article clearfix">
+      
+      <div class="newspaper-img-wrapper img-right">
+        <img src="../images/photo_2026-08-12_13-14-41.large.webp" alt="Ikkinchi maqola rasmi">
+      </div>
+
+      <div class="newspaper-text-content">
+        <h1>Nutq — bilimni ta’sirga aylantiradigan vosita</h1>
+
+        <p>TEDxQurultoyning ekologik yo‘nalishdagi ahamiyati ayniqsa katta.
+
+Bugungi ekologik muammolar — iqlim o‘zgarishi, chiqindilarning ko‘payishi, suv resurslaridan oqilona foydalanish, biologik xilma-xillikning kamayishi va tabiatga inson ta’sirining kuchayishi — kelajak avlodiga bevosita ta’sir qiladi.
+
+Shuning uchun bu masalalar haqida yoshlarning o‘z ovoziga ega bo‘lishi muhim.
+
+Yosh ekolog o‘z nutqi orqali tomoshabinga yangi ma’lumot berishi mumkin. Ammo undan ham muhimi — u insonni o‘ylashga majbur qilishi mumkin.
+
+“Men tabiat uchun bugun nima qila olaman?”
+
+Agar bitta nutq tinglovchida shunday savol uyg‘otsa, demak, u o‘z maqsadiga erishgan.
+
+Nutq — bilimni ta’sirga aylantiradigan vosita
+
+Bilimga ega bo‘lish boshqa, uni boshqalarga tushunarli va ta’sirchan tarzda yetkazish esa butunlay boshqa mahorat.
+
+TEDxQurultoy yoshlar uchun aynan shu ko‘nikmani rivojlantirish imkonini beradi.
+
+Yaxshi notiq:
+
+murakkab fikrni sodda tushuntira oladi;
+auditoriya e’tiborini ushlab turadi;
+o‘z fikrini dalillar bilan asoslaydi;
+hissiyot va mantiqni uyg‘unlashtiradi;
+nutqini aniq xulosa bilan yakunlaydi.
+
+Ammo eng muhimi, yaxshi notiqning nutqidan keyin tinglovchi nimanidir his qiladi yoki o‘ylaydi.
+
+Chunki kuchli nutq quloq orqali kirib, ongda davom etadi.</p>
+
+
+      </div>
+
+    </article>
+
+  </main>
+
+</div>
+
+</body>
+</html>

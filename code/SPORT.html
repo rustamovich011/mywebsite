@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sport Musobaqalari — V Xalqaro Ekologik Qurultoy</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  min-height:100vh;
+  background:linear-gradient(135deg,#075b3f,#087b70,#075b88);
+  color:white;
+  padding:20px 20px 50px;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+
+/* ==========================================
+   GLASSMORPHISM NAVIGATSIYA PANELI (HEADER)
+========================================== */
+.navbar-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  position: sticky;
+  top: 15px;
+  z-index: 1000;
+  animation: fadeInDown 0.8s ease-out forwards;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.12) 0%, 
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  padding: 8px 20px 8px 16px;
+  width: 100%;
+  max-width: 1150px;
+  transition: all 0.3s ease;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #fff;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.nav-brand .logo-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.nav-brand:hover .logo-img {
+  transform: scale(1.08);
+}
+
+.nav-brand .brand-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  line-height: 1.2;
+}
+
+.nav-links {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  gap: 6px;
+  margin: 0 auto;
+  padding: 0 5px;
+  flex-wrap: nowrap;
+  flex-shrink: 1;
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: 12.5px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-links a.home-icon {
+  font-size: 15px;
+  padding: 6px 10px;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+.nav-links a.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+}
+
+.nav-telegram {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 12.5px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-left: 10px;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.nav-telegram:hover {
+  background: #20a0e1;
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(32, 160, 225, 0.4);
+}
+
+/* ==========================================
+   SARLAVHA VA RASYMLAR GRIDI
+========================================== */
+.hero-section {
+  text-align: center;
+  padding: 10px 0 30px;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-section h1 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.hero-section p {
+  font-size: 16px;
+  max-width: 700px;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.5;
+}
+
+.sports-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.sport-card {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.sport-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.sport-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.sport-card:hover img {
+  transform: scale(1.08);
+}
+
+.sport-title-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sport-title-overlay h3 {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* ==========================================
+   TAGIDAGI MATN UCHUN KOLONKALAR (YANGI)
+========================================== */
+.info-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 35px;
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.info-card h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #7be0a8;
+}
+
+.info-card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .sports-grid, .info-columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .sport-card {
+    height: 350px;
+  }
+}
+
+@media(max-width:650px){
+  .sports-grid, .info-columns {
+    grid-template-columns: 1fr;
+  }
+  .sport-card {
+    height: 300px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- NAVIGATSIYA PANELI -->
+  <div class="navbar-wrapper">
+    <nav class="navbar">
+      <a href="index.html" class="nav-brand">
+        <img src="../images/60524aa6-25e8-4851-a328-6011cb4a0805.jpg" alt="Logo" class="logo-img">
+        <span class="brand-title">
+          V EKOLOGIYA<br>
+          XALQARO<br>
+          QURULTOYI
+        </span>
+      </a>
+
+      <ul class="nav-links">
+        <li>
+          <a href="index.html" class="home-icon" title="Bosh sahifa">
+            <i class="fa-solid fa-house"></i>
+          </a>
+        </li>
+        <li><a href="ecofashion.html">Eco-fashion</a></li>
+        <li><a href="tedx.html">TEDxQurultoy</a></li>
+        <li><a href="kahoot.html">Kahoot</a></li>
+        <li><a href="xalqlardostligi.html">Xalqlar dostligi</a></li>
+      </ul>
+
+      <a href="https://t.me/ekologik_qurultoy" target="_blank" class="nav-telegram">
+        <i class="fa-brands fa-telegram"></i>
+        <span>Telegram</span>
+      </a>
+    </nav>
+  </div>
+
+  <main>
+    <section class="hero-section">
+      <h1><i class="fa-solid fa-trophy" style="color: #f1c40f; margin-right: 10px;"></i>Sport Musobaqalari</h1>
+      <p>Qurultoy doirasida viloyatlar o'rtasida o'tkazilgan sport musobaqalaridan lavhalar.</p>
+    </section>
+
+    <!-- RASMLAR GRIDI -->
+    <div class="sports-grid">
+      
+      <div class="sport-card">
+        <img src="../images/4V8A2483.JPG" alt="Futbol">
+        <div class="sport-title-overlay">
+          <i class="fa-solid fa-futbol"></i>
+          <h3>Futbol</h3>
+        </div>
+      </div>
+
+      <div class="sport-card">
+        <img src="../images/4V8A3126.JPG" alt="Voleybol">
+        <div class="sport-title-overlay">
+          <i class="fa-solid fa-volleyball"></i>
+          <h3>Voleybol</h3>
+        </div>
+      </div>
+
+      <div class="sport-card">
+        <img src="../images/4V8A2450.JPG" alt="Badminton">
+        <div class="sport-title-overlay">
+          <i class="fa-solid fa-table-tennis-paddle-ball"></i>
+          <h3>Badminton</h3>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MATNLAR UCHUN TAGIDAGI KOLONKALAR (YANGI) -->
+    <div class="info-columns">
+      
+      <div class="info-card">
+        <h4><i class="fa-solid fa-futbol"></i> Futbol Turniri</h4>
+        <p>Viloyatlar terma jamoalari o'rtasida bo'lib o'tgan shiddatli va qiziqarli futbol uchrashuvlari. Turnir davomida jamoalar o'rtasida do'stlik va halol o'yin muhiti shakllandi.</p>
+      </div>
+
+      <div class="info-card">
+        <h4><i class="fa-solid fa-volleyball"></i> Voleybol Musobaqasi</h4>
+        <p>Jamoaviy jipslik va hamjihatlikni talab etuvchi voleybol bahslari. Har bir ochko uchun murosasiz va do'stona kurashlar o'tkazildi.</p>
+      </div>
+
+      <div class="info-card">
+        <h4><i class="fa-solid fa-table-tennis-paddle-ball"></i> Badminton Bahslari</h4>
+        <p>Chaqqonlik va yuqori diqqat-e'tiborni talab etuvchi badminton bellashuvlari. Yakkalik va juftlik yo'nalishlarida g'oliblar aniqlandi.</p>
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+</body>
+</html>
